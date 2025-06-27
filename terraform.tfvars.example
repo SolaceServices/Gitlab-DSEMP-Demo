@@ -1,0 +1,4 @@
+msg_vpn_name = "default"
+solace_url = "https://XXXXX.messaging.solace.cloud:943"
+solace_username = "mission-control-manager"
+solace_password = "XXXXX"

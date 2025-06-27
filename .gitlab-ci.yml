@@ -1,0 +1,13 @@
+include:
+  - component: gitlab.com/components/opentofu/full-pipeline@2.8.1
+    inputs:
+      opentofu_version: 1.10.1
+
+variables:
+  TF_IN_AUTOMATION: "true"
+  TF_VAR_solace_username: $SOLACE_SANDBOX_USERNAME
+  TF_VAR_solace_password: $SOLACE_SANDBOX_PASSWORD
+  TF_VAR_solace_url: $SOLACE_SANDBOX_URL
+  TF_VAR_msg_vpn_name: "tgo-sandbox"
+
+stages: [validate, test, build, deploy, cleanup]
