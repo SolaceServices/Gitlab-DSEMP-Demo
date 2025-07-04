@@ -73,6 +73,51 @@ This template project provides a quick start for managing Solace resources with 
 
 ---
 
+## 💾 How to Import and Use the `opentofu/full-pipeline` GitLab CI Component
+
+GitLab CI/CD components can only be used within the same GitLab instance. To use the official `opentofu/full-pipeline` component on your self-managed GitLab, follow these simple steps:
+* Source : [https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed](https://docs.gitlab.com/ci/components/#use-a-gitlabcom-component-on-gitlab-self-managed)
+
+### Step 1: Import the Component into Your GitLab
+
+1. Go to your GitLab instance and create a new group named `components` (optional, but recommended for organization).
+2. Within this group, click **New Project** → **Import project** → **Repository by URL**.
+3. Enter the following repository URL:
+
+   ```
+   https://gitlab.com/gitlab-org/components/opentofu.git
+   ```
+4. Name the project `opentofu`.
+5. (Optional, but recommended) Enable **"Mirror repository"** to automatically update your local copy.
+
+### Step 2: Enable the Project as a CI/CD Component
+
+1. Navigate to your newly imported project (`components/opentofu`).
+2. Go to **Settings** → **General** → **Visibility, project features, permissions**.
+3. Under **CI/CD Catalog**, enable the option **"This project is a component"**.
+4. Click **Save**.
+
+### Step 3: Ensure the Required Release Exists
+
+1. Check that the tag `2.8.1` is available in your imported repository. (If mirrored, it should appear automatically.)
+2. Ensure there is a GitLab release associated with the `2.8.1` tag. If needed, create a new release manually by navigating to **Deployments → Releases → New release**, selecting the tag `2.8.1`.
+
+### Step 4: Use the Component in Your GitLab CI Pipeline
+
+In your project's `.gitlab-ci.yml`, include the component as follows:
+
+```yaml
+include:
+  - component: $CI_SERVER_FQDN/components/opentofu/full-pipeline@2.8.1
+```
+
+* `$CI_SERVER_FQDN` is a built-in variable pointing to your GitLab instance domain.
+* Ensure you replace `components` with your actual group name if different.
+
+
+
+---
+
 ## 📚 Helpful Links
 
 * [GitLab Documentation](https://docs.gitlab.com/)
