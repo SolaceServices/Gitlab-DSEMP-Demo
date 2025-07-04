@@ -15,8 +15,9 @@ This template project provides a quick start for managing Solace resources with 
 
 ## 🏗️ Project Setup
 
-### 1. **Create a Project from This Template**
+### 1. **Create a Project**
 
+* Create a new blank project in your gitlab account
 * Clone this project localy
 * Add your project as a remote using Gitlab pre completed code
 
